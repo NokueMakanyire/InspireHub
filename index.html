@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InspireHub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>INSPIREHUB</h2>
+
+        <a href="#" onclick="go('home')">🏠 Home</a>
+        <a href="dashboard.html">🎥 Dashboard</a>
+        <a href="#">🔥 Progress</a>
+        <a href="#">🏆 Achievements</a>
+        <a href="#" onclick="logout()">🚪 Logout</a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <!-- TOPBAR -->
+        <div class="topbar">
+            <div class="brand">Welcome to InspireHub</div>
+        </div>
+
+        <!-- HERO -->
+        <section id="home" class="hero">
+            <h1>Motivation for Every Stage of Life</h1>
+            <p>Learn • Grow • Inspire</p>
+        </section>
+
+        <!-- USER CARD -->
+        <div class="card">
+            <h3 id="welcomeText">Loading user...</h3>
+            <p>Select Dashboard to continue your learning journey.</p>
+        </div>
+
+        <!-- DAILY MOTIVATION -->
+        <div class="card">
+            <h3>🌟 Daily Motivation</h3>
+            <p id="dailyMotivation">Loading motivation...</p>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FLOATING CHAT BUTTON -->
+<div id="chatbot-btn">
+    💬
+</div>
+
+<!-- CHATBOT WINDOW -->
+<div id="chatbot-window">
+
+    <div class="chat-header">
+        <span>🤖 InspireBot</span>
+        <span id="close-chat">✖</span>
+    </div>
+
+    <div id="chat-messages">
+        <div class="bot-message">
+            Hi! 👋 Welcome to InspireHub.
+            I'm your motivational coach. How can I help you today?
+        </div>
+    </div>
+
+    <div class="chat-input-area">
+        <input
+            type="text"
+            id="user-input"
+            placeholder="Ask for motivation..."
+        >
+
+        <button onclick="sendMessage()">
+            Send
+        </button>
+    </div>
+
+</div>
+
+<!-- JAVASCRIPT -->
+<script src="js/speakers.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

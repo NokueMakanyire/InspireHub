@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InspireHub Login</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* LOGIN BACKGROUND */
+.auth-body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #1e1b4b, #0f172a);
+  font-family: Arial, sans-serif;
+}
+
+/* LOGIN CARD */
+.auth-box {
+  width: 360px;
+  background: rgba(17, 24, 39, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  text-align: center;
+}
+
+.auth-box h1 {
+  margin-bottom: 8px;
+  font-size: 24px;
+}
+
+.auth-box p {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+/* INPUTS */
+.auth-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #1f2937;
+  color: white;
+}
+
+/* BUTTON */
+.btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  background: linear-gradient(90deg, #7c3aed, #4f46e5);
+  border: none;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  transform: scale(1.03);
+}
+
+/* PASSWORD WRAPPER */
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap span {
+  position: absolute;
+  right: 10px;
+  top: 40%;
+  cursor: pointer;
+  font-size: 12px;
+  color: #a5b4fc;
+}
+</style>
+
+</head>
+
+<body class="auth-body">
+
+<div class="auth-box">
+
+  <h1>Welcome to InspireHub</h1>
+  <p>Learn • Grow • Transform your life</p>
+
+  <input id="name" placeholder="Full Name">
+
+  <input id="dob" type="date">
+
+  <div class="password-wrap">
+    <input id="password" type="password" placeholder="Create Password">
+    <span onclick="togglePassword()">Show</span>
+  </div>
+
+  <button class="btn" onclick="register()">Continue</button>
+
+</div>
+
+<script>
+function togglePassword(){
+  const pass = document.getElementById("password");
+
+  if(pass.type === "password"){
+    pass.type = "text";
+  } else {
+    pass.type = "password";
+  }
+}
+
+function register(){
+
+  const name = document.getElementById("name").value;
+  const dob = document.getElementById("dob").value;
+  const password = document.getElementById("password").value;
+
+  if(!name || !dob || !password){
+    alert("Please fill all fields");
+    return;
+  }
+
+  const age = calculateAge(dob);
+
+  let group = "kids";
+  if(age <= 12) group = "kids";
+  else if(age <= 19) group = "teens";
+  else group = "adults";
+
+  // PROTOTYPE STORAGE (NO DATABASE)
+  localStorage.setItem("user", JSON.stringify({
+    name,
+    password,
+    group,
+    age,
+    xp: 0,
+    streak: 1
+  }));
+
+  window.location.href = "index.html";
+}
+
+function calculateAge(dob){
+  const diff = Date.now() - new Date(dob).getTime();
+  return new Date(diff).getUTCFullYear() - 1970;
+}
+</script>
+
+</body>
+</html>
